@@ -1,9 +1,10 @@
 package classes;
 
 import abstracts.Obj;
+import interfaces.Locationable;
 import interfaces.Reasonable;
 
-public class Person extends Obj implements Reasonable {
+public class Person extends Obj implements Reasonable, Locationable {
     private final String name;
     private final float luck;
 
@@ -19,6 +20,7 @@ public class Person extends Obj implements Reasonable {
         this.name = name;
         this.luck = (0 < luck && luck < 1) ? luck : 0.75F;
     }
+
 
     public String getName() {
         return name;
@@ -38,4 +40,8 @@ public class Person extends Obj implements Reasonable {
         return "";
     }
 
+    @Override
+    public void locate(Place place) {
+
+    }
 }

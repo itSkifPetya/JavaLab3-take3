@@ -1,8 +1,11 @@
 package records;
 
 import classes.Person;
+import classes.Place;
 
-public record Heroes() {
+public record UniverseBase() {
+    static Place basePlace = new Place("World");
+    static Person baseOwner = new Person("Nobody");
     static String[] heroNames = new String[]{"Скуперфильд", "Гунька", "Знайка", "Винтик", "Незнайка", "Тюбик"};
     static String[] heroItems = new String[]{"Трость", "Микрофон", "Краска", "Компас", "Шляпа", "Конструктор"};
     static String[] thoughts = new String[]{};
@@ -15,6 +18,14 @@ public record Heroes() {
             persons[i] = new Person(heroNames[i], (float) Math.random());
         }
         return persons;
+    }
+
+    public static Place getBasePlace() {
+        return basePlace;
+    }
+
+    public static Person getBaseOwner() {
+        return baseOwner;
     }
 
     public static String[] getHeroNames() {

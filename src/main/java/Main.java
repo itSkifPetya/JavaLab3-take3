@@ -1,7 +1,7 @@
 import abstracts.Obj;
 import classes.Item;
 import classes.Person;
-import records.Heroes;
+import records.UniverseBase;
 import records.Highlighter;
 
 import java.util.ArrayList;
@@ -9,10 +9,14 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        story(
-                storyInit()
-        );
-//        storyInit();
+        story(storyInit());
+    }
+
+    public static void story(ArrayList<Obj> data) {
+        Person hero = (Person) data.get(0);
+        Item lostItem = (Item) data.get(1);
+        System.out.printf("\"А может быть, я пришёл в вагон уже без %s?\"\n", Highlighter.item(lostItem));
+
     }
 
     public static ArrayList<Obj> storyInit() {
@@ -21,7 +25,7 @@ public class Main {
 
         System.out.println("Выберите одного из героев или создайте нового:");
         int c = 0;
-        for (Person x: Heroes.getPersons()) {
+        for (Person x: UniverseBase.getPersons()) {
             System.out.println(c + ") " + Highlighter.person(x));
             c++;
         }
@@ -32,7 +36,7 @@ public class Main {
             int heroIndex = Integer.parseInt(heroName);
             while (true) {
                 try {
-                    hero = Heroes.getPersons()[heroIndex];
+                    hero = UniverseBase.getPersons()[heroIndex];
                     break;
                 } catch (ArrayIndexOutOfBoundsException e) {
                     System.out.printf("[input error] %s. Try again \n", e);
@@ -47,20 +51,11 @@ public class Main {
             hero = new Person(heroName, Float.parseFloat(heroLuck));
             System.out.println("Вы создали " + hero);
         }
-        String[] heroItems = Heroes.getHeroItems();
+        String[] heroItems = UniverseBase.getHeroItems();
         Item lostItem = new Item(heroItems[((int) (Math.random() * 6))]);
 
         data.add(hero);
         data.add(lostItem);
         return data;
-    }
-
-
-
-    public static void story(ArrayList<Obj> data) {
-        Person hero = (Person) data.get(0);
-        Item lostItem = (Item) data.get(1);
-        System.out.printf("\"А может быть, я пришёл в вагон уже без %s?\"", Highlighter.item(lostItem));
-
     }
 }

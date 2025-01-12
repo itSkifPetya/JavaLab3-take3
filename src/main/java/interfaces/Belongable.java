@@ -1,8 +1,9 @@
 package interfaces;
 
 import abstracts.Obj;
+import classes.Person;
 
 public interface Belongable {
 
-    void belongs(Obj owner);
+    void belongs(Person owner);
 }
