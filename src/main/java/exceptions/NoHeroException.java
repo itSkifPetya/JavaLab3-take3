@@ -7,4 +7,5 @@ public class NoHeroException extends Exception {
     public String getMessage() {
         return "No such HeroName. Try again";
     }
+
 }

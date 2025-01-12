@@ -5,6 +5,7 @@ import classes.Person;
 public record Heroes() {
     static String[] heroNames = new String[]{"Скуперфильд", "Гунька", "Знайка", "Винтик", "Незнайка", "Тюбик"};
     static String[] heroItems = new String[]{"Трость", "Микрофон", "Краска", "Компас", "Шляпа", "Конструктор"};
+    static String[] thoughts = new String[]{};
     static Person[] persons = persons(heroNames);
 
     private static Person[] persons(String[] heroNames) {
