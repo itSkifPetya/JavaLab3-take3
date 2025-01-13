@@ -48,6 +48,4 @@ public record UniverseBase() {
         return heroItems[index];
     }
 
-
-
 }

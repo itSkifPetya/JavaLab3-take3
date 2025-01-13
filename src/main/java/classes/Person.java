@@ -3,12 +3,14 @@ package classes;
 import abstracts.Obj;
 import interfaces.Locationable;
 import interfaces.Reasonable;
+import records.UniverseBase;
 
 public class Person extends Obj implements Reasonable, Locationable {
     private final String name;
     private final float luck;
+    private Place location = Locationable.location;
 
-
+    //TODO: Динамичский полиморфизм!!!
     public Person(String name) {
         super(name);
         this.name = name;
@@ -19,6 +21,13 @@ public class Person extends Obj implements Reasonable, Locationable {
         super(name);
         this.name = name;
         this.luck = (0 < luck && luck < 1) ? luck : 0.75F;
+    }
+
+    public Person(String name, float luck, Place location) {
+        super(name);
+        this.name = name;
+        this.luck = (0 < luck && luck < 1) ? luck : 0.75F;
+        this.location = location;
     }
 
 
